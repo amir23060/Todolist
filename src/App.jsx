@@ -4,11 +4,21 @@ import Input from "./input";
 import "./App.css";
 
 export default function App() {
+  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <Input show={show} />
+      <Router>
+        <nav className="navbar">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contacts">Contacts</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Input setData={setData} />} />
+        </Routes>
+      </Router>
     </>
   );
 }
