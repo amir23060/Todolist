@@ -17,7 +17,9 @@ const Display = ({ data, setData }) => {
         {displayedUsers.length > 0 ? (
           displayedUsers.map((user) => (
             <div key={user.id} className="displayUser">
-              {user.image && <img src={user.image} alt="user" />}
+              {user.image && (
+                <img src={user.image || "/fallback.png"} alt="user" />
+              )}
               <h1>{user.name}</h1>
               <h4> {user.age}yo</h4>
               <h4>
