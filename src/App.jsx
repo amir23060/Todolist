@@ -2,21 +2,37 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Input from "./input";
 import "./App.css";
+import Display from "./display";
 
 export default function App() {
-  const [data, setData] = useState([]);
-  const [show, setShow] = useState(false);
+  const [data, setData] = useState(() => {
+    const saved = localStorage.getItem("userData");
+    return saved ? JSON.parse(saved) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("userData", JSON.stringify(data));
+  }, [data]);
 
   return (
     <>
       <Router>
         <nav className="navbar">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contacts">Contacts</Link>
+          <p>
+            {" "}
+            <Link to="/">Home</Link>
+          </p>
+          <p>
+            {" "}
+            <Link to="/about">About</Link>
+          </p>
+          <p>
+            {" "}
+            <Link to="/contacts">Contacts</Link>
+          </p>
         </nav>
         <Routes>
-          <Route path="/" element={<Input setData={setData} />} />
+          <Route path="/" element={<Input setData={setData} data={data} />} />
+          <Route path="/display" element={<Display />} />
         </Routes>
       </Router>
     </>
