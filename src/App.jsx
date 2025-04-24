@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Input from "./input";
 import Display from "./display";
 import "./App.css";
+import Contacts from "./Contacts";
+import About from "./about";
+import Profile from "./profile";
 
 export default function App() {
   const [data, setData] = useState(() => {
@@ -36,6 +39,9 @@ export default function App() {
             path="/display"
             element={<Display data={data} setData={setData} />}
           />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </Router>
     </>

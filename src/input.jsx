@@ -93,8 +93,6 @@ const Input = ({ setData, data }) => {
 
         <Display data={data} setData={setData} />
       </div>
-
-      <Endpoint />
     </div>
   );
 };
