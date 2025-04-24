@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Display from "./display";
-import Endpoint from "./endpoint";
 
 const Input = ({ setData, data }) => {
   const [name, setname] = useState("");
@@ -40,6 +39,15 @@ const Input = ({ setData, data }) => {
             >
               {show ? "Hide form" : "Add new user"}
             </button>
+            <div
+              id="info"
+              onClick={() =>
+                alert("You can go users profile by clicking on the users image")
+              }
+            >
+              {" "}
+              <h3>?</h3>
+            </div>
           </div>
 
           {show && (

@@ -16,27 +16,27 @@ const Display = ({ data, setData }) => {
       <div className="display">
         {displayedUsers.length > 0 ? (
           displayedUsers.map((user) => (
-            <Link key={user.id} to={`/profile/${user.id}`}>
-              {" "}
-              <div className="displayUser">
+            <div key={user.id} className="displayUser">
+              <Link to={`/profile/${user.id}`}>
+                {" "}
                 {user.image && (
                   <img src={user.image || "/fallback.png"} alt="user" />
                 )}
                 {!user.image ? <img src="/fallback.png" alt="user"></img> : ""}
-                <h1>{user.name}</h1>
-                <h4> {user.age}yo</h4>
-                <h4>
-                  {user.occupation === "rather not say" || !user.occupation
-                    ? ""
-                    : user.occupation}
-                </h4>
-                <input
-                  type="button"
-                  value="Delete"
-                  onClick={() => handleDelete(user.id)}
-                />
-              </div>
-            </Link>
+              </Link>
+              <h1>{user.name}</h1>
+              <h4> {user.age}yo</h4>
+              <h4>
+                {user.occupation === "rather not say" || !user.occupation
+                  ? ""
+                  : user.occupation}
+              </h4>
+              <input
+                type="button"
+                value="Delete"
+                onClick={() => handleDelete(user.id)}
+              />
+            </div>
           ))
         ) : (
           <h4>No user found</h4>
